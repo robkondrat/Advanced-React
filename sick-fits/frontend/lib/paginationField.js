@@ -4,7 +4,6 @@ export default function paginationField() {
   return {
     keyArgs: false, //tells apollo we will take care of everything
     read(existing = [], { args, cache }) {
-      console.log({ existing, args, cache });
       const { skip, first } = args;
       const data = cache.readQuery({ query: PAGINATION_QUERY });
       const count = data?._allProductsMeta?.count;
@@ -40,8 +39,7 @@ export default function paginationField() {
       for(let i = skip; i < skip + incoming.length; ++i) {
         merged[i] = incoming[i - skip];
       }
-
-      console.log(merged);
+      
       return merged;
     }
   }
