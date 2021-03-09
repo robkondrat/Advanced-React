@@ -44,6 +44,7 @@ export default function Search() {
     getComboboxProps, 
     getItemProps, 
     isOpen,
+    selectedItem,
     highlightedIndex 
   } = useCombobox(
     {
@@ -76,7 +77,7 @@ export default function Search() {
       </div>
       <DropDown {...getMenuProps()}>
         { isOpen && items.map((item, index) => (
-          <DropDownItem {...getItemProps({ item })} key={item.id} highlighted={index === highlightedIndex}>
+          <DropDownItem {...getItemProps({ item })} key={`${item}${index}`} highlighted={index === highlightedIndex}>
             <img src={item.photo.image.publicUrlTransformed} alt={item.name} width="50" />
             {item.name}
           </DropDownItem>
