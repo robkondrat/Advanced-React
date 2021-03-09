@@ -6,8 +6,8 @@ export const Order = list({
   fields: {
     label: virtual({
       graphQLReturnType: 'String',
-      resolver: function() {
-        return `WES IS COOL ${formatMoney(item.total)}`;
+      resolver: function(item) {
+        return `${formatMoney(item.total)}`;
       },
     }),
     total: integer(),
